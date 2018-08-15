@@ -67,5 +67,9 @@ public class CodePentagon : MonoBehaviour {
         uv[5] = new Vector2(vert4.x, vert4.z);
 
         mesh.uv = uv;
+        foreach(Vector3 vert in verts)
+        {
+            Debug.Log("vertex at: " + transform.TransformPoint(vert));
+        }
     }
 }
