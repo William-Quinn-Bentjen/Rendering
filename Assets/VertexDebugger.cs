@@ -8,6 +8,7 @@ public class VertexDebugger : MonoBehaviour {
     public List<Color> vertexColors = new List<Color>(new Color[1] { new Color(1, 0, 0, .5f) });
     private void OnDrawGizmos()
     {
+#if UNITY_EDITOR
         if (isEnabled)
         {
             int i = 0;
@@ -27,19 +28,22 @@ public class VertexDebugger : MonoBehaviour {
                 i++;
             }
         }
+#endif
     }
     public void Reset()
     {
+#if UNITY_EDITOR
         isEnabled = true;
         vertexSize = .1f;
         vertexColors = new List<Color>(new Color[1] { new Color(1, 0, 0, .5f) });
+#endif
     }
+    //taken from https://answers.unity.com/questions/44848/how-to-draw-debug-text-into-scene.html
     static public void drawString(string text, Vector3 worldPos, Color? colour = null)
     {
+#if UNITY_EDITOR
         UnityEditor.Handles.BeginGUI();
-
         var restoreColor = GUI.color;
-
         if (colour.HasValue) GUI.color = colour.Value;
         var view = UnityEditor.SceneView.currentDrawingSceneView;
         if (view != null)
@@ -58,6 +62,6 @@ public class VertexDebugger : MonoBehaviour {
             GUI.color = restoreColor;
             UnityEditor.Handles.EndGUI();
         }
-
+#endif
     }
 }
