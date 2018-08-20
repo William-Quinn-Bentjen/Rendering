@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PolygonVertexGenerator : MonoBehaviour {
+#if UNITY_EDITOR
     public bool Recalculate = false;
+#endif
     [Header("Input")]
     public int sides = 3;
     public float extents = 1;
-    [Header("Debug info")]
-    public List<Vector3> corners = new List<Vector3>();
-    public List<float> distances = new List<float>();
     [Header("Gizmo Settings")]
     public Color originColor = Color.blue;
     public float originSize = .1f;
     public Color cornerColor = Color.green;
     public float cornerSize = .1f;
     public Color edgeColor = Color.red;
+    [Header("Debug info")]
+    public List<Vector3> corners = new List<Vector3>();
+    public List<float> distances = new List<float>();
 
     /*
 xi = r * cos(i * 2π/s)

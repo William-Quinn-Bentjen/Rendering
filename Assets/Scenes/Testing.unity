@@ -3588,7 +3588,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1752573435}
   m_Direction: 2
   m_Value: 0.9999989
-  m_Size: 0.6198166
+  m_Size: 0.6198167
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4942,7 +4942,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2116052046}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.99999976
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5695,6 +5695,49 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1752573434}
+--- !u!1 &1763420839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1763420841}
+  - component: {fileID: 1763420840}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1763420840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763420839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae646793151d94498b28e3de0fa872e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sides: 36000
+  extents: 1
+  create: 1
+--- !u!4 &1763420841
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763420839}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1800362110
 GameObject:
   m_ObjectHideFlags: 0
@@ -6229,7 +6272,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1995180288}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3b2d30c72c726a488f101ffac466b3d, type: 3}
   m_Name: 
@@ -6280,7 +6323,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1995180288}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05fc502d374aed94a8a477ba75347c30, type: 3}
   m_Name: 
@@ -6288,13 +6331,13 @@ MonoBehaviour:
   Recalculate: 0
   sides: 5
   extents: 1
-  corners: []
-  distances: []
   originColor: {r: 0, g: 0, b: 1, a: 1}
   originSize: 0.1
   cornerColor: {r: 0, g: 1, b: 0, a: 1}
   cornerSize: 0.1
   edgeColor: {r: 1, g: 0, b: 0, a: 1}
+  corners: []
+  distances: []
 --- !u!1 &1995527969
 GameObject:
   m_ObjectHideFlags: 0
@@ -6439,7 +6482,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: GameObject (1)
+  m_Name: 2DPolygonVertexGen
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

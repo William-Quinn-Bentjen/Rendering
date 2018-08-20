@@ -17,23 +17,23 @@ public class CodePentagon : MonoBehaviour {
         var verts = new Vector3[6] { origin, vert0, vert1, vert2, vert3, vert4 };
         mesh.vertices = verts;
         var indices = new int[15];
-        //first face
+        //first face 0
         indices[0] = 0;
         indices[1] = 1;
         indices[2] = 2;
-        //2nd face
+        //2nd face 1
         indices[3] = 0;
         indices[4] = 2;
         indices[5] = 3;
-        //3nd face
+        //3nd face 2
         indices[6] = 0;
         indices[7] = 3;
         indices[8] = 4;
-        //4nd face
+        //4nd face 3 
         indices[9] = 0;
         indices[10] = 4;
         indices[11] = 5;
-        //5nd face
+        //5nd face 4
         indices[12] = 0;
         indices[13] = 5;
         indices[14] = 1;
