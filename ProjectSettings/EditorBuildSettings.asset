@@ -4,4 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Final/Scene.unity
+    guid: 8e7b0acbbbeefad428e54f8c00c5b516
+  - enabled: 1
+    path: Assets/SeamlessLevelLoading/1.unity
+    guid: 2d7eccf34436522499c3a68affe0d9d0
+  - enabled: 1
+    path: Assets/SeamlessLevelLoading/2.unity
+    guid: 3b42be5db5d18d140a2999cde0eb06ff
+  - enabled: 1
+    path: Assets/SeamlessLevelLoading/3.unity
+    guid: f37e17458f57c8c4eafb649fadcdf117
+  - enabled: 1
+    path: Assets/SeamlessLevelLoading/Player.unity
+    guid: 0f032f290246eeb43973527c9cdb39ae
