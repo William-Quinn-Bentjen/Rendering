@@ -24,5 +24,26 @@ public class MaterialSwitcher : MonoBehaviour {
             }
         }
     }
+    private void Start()
+    {
+        StartCoroutine(testSwitch());
+    }
+    IEnumerator testSwitch()
+    {
+        int i = 0;
+        while(true)
+        {
+            SwitchMaterials(availableMaterials[i]);
+            if (i < availableMaterials.Count -1)
+            {
+                i++;
+            }
+            else
+            {
+                i = 0;
+            }
+            yield return new WaitForSeconds(2);
+        }
+    }
 
 }
