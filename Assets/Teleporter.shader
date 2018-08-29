@@ -56,10 +56,10 @@ Shader "Unlit/Teleporter"
 			{
 				v2f o;
 				//o.objVertex = mul(unity_ObjectToWorld, v.vertex);
-				_TransTex_ST.x = sin(_Time.x);
+				/*_TransTex_ST.x = sin(_Time.x);
 				_TransTex_ST.y = cos(_Time.x);
 				_TransTex_ST.z = tan(_Time.x);
-				_TransTex_ST.w = cos(_Time.x);
+				_TransTex_ST.w = cos(_Time.x);*/
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.uv2 = TRANSFORM_TEX(v.uv2, _TransTex);
@@ -72,8 +72,19 @@ Shader "Unlit/Teleporter"
 				// sample the texture
 				fixed4 col = tex2D(_MainTex, i.uv);
 				fixed4 trans = tex2D(_TransTex, i.uv2);
-				col.a = trans.r;
-
+				/*if (trans.r > .5f && trans.r < .9f)
+				{
+					col.a = sin(_Time.y) * trans.r;
+				}
+				else
+				{
+					col.a = cos(_Time.y) * trans.r;
+				}
+				if (col.a < .1f)
+				{
+					col.a = .1f;
+				}*/
+				col = trans;
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);
 				return col;
