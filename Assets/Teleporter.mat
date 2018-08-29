@@ -12,7 +12,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -20,14 +20,15 @@ Material:
     m_TexEnvs:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: e9e9d1dd646670c4da19dbb159adebf8, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.25, y: 0.25}
         m_Offset: {x: 0, y: 0}
     - _TransTex:
         m_Texture: {fileID: 2800000, guid: f9a6886f027115141abb6701d92cbb52, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 0.25, y: 0.25}
+        m_Offset: {x: -1.64, y: 0.75}
     m_Floats:
     - _Bias: 0
+    - _MoveDampen: 0
     - _ScanningFrequency: 100
     - _ScanningSpeed: 100
     m_Colors:
