@@ -20,15 +20,16 @@ Material:
     m_TexEnvs:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: e9e9d1dd646670c4da19dbb159adebf8, type: 3}
-        m_Scale: {x: 0.25, y: 0.25}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransTex:
         m_Texture: {fileID: 2800000, guid: f9a6886f027115141abb6701d92cbb52, type: 3}
-        m_Scale: {x: 0.25, y: 0.25}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Angle: 0
     - _Bias: 0
-    - _MoveDampen: 0
+    - _MoveDampen: 0.5
     - _ScanningFrequency: 100
     - _ScanningSpeed: 100
     m_Colors:

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b537bae1ed341a84c9b19ff7241fbfeb
+timeCreated: 1536086465
+licenseType: Pro
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Splat: {fileID: 1130032643021596, guid: 72925c45d91da0d41ba999d3a8c5e4a7, type: 2}
+  - part: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

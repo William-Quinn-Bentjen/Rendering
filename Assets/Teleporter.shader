@@ -8,8 +8,7 @@ Shader "Unlit/Teleporter"
 		//1,1,1 = white
 		_MainTex ("Texture", 2D) = "white" {}
 		_TransTex ("Transparency Texture", 2D) = "white" {}
-		_Color("Black Color", Color) = (0, 1, 0, 1)
-		_2ndColor("White Color", Color) = (1, 1, 0, 1)
+		_Color("Color", Color) = (0, 1, 0, 1)
 		_MoveDampen("Randomness Dampener", Float) = .2
 	}
 	SubShader
@@ -50,16 +49,20 @@ Shader "Unlit/Teleporter"
 			float4 _MainTex_ST;
 			sampler2D _TransTex;
 			float4 _TransTex_ST;
-			float4 _2ndColor;
+			float _MoveDampen;
 
 			v2f vert (appdata v)
 			{
 				v2f o;
 				//o.objVertex = mul(unity_ObjectToWorld, v.vertex);
-				/*_TransTex_ST.x = sin(_Time.x);
-				_TransTex_ST.y = cos(_Time.x);
-				_TransTex_ST.z = tan(_Time.x);
-				_TransTex_ST.w = cos(_Time.x);*/
+				_MainTex_ST.x = .5f + sin(_Time.x) * .2f;
+				_MainTex_ST.y = .5f + cos(_Time.x) * .2f;
+				_TransTex_ST.x = .5f + sin(_Time.x) * .2f;
+				_TransTex_ST.y = .5f + cos(_Time.x) * .2f;
+				_MainTex_ST.z = sin(_Time.x + 7) * -_MoveDampen;
+				_MainTex_ST.w = cos(_Time.x + 5) * _MoveDampen;
+				_TransTex_ST.z = sin(_Time.x + 2) * _MoveDampen;
+				_TransTex_ST.w = cos(_Time.x) * -_MoveDampen;
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.uv2 = TRANSFORM_TEX(v.uv2, _TransTex);
@@ -72,6 +75,19 @@ Shader "Unlit/Teleporter"
 				// sample the texture
 				fixed4 col = tex2D(_MainTex, i.uv);
 				fixed4 trans = tex2D(_TransTex, i.uv2);
+				col.r = lerp(col.r, _Color.r, .2f);
+				col.g = lerp(col.g, _Color.g, .2f);
+				col.b = lerp(col.b, _Color.b, .8f);
+				col.a *= trans.r;
+				//col.rgb *= _Color.rgb/10;
+				/*if (col.r > .5f && col.r < .9f)
+				{
+					col.rgb *= _Color.rgb;
+				}
+				else
+				{
+					col.a = ;
+				}*/
 				/*if (trans.r > .5f && trans.r < .9f)
 				{
 					col.a = sin(_Time.y) * trans.r;
@@ -84,7 +100,7 @@ Shader "Unlit/Teleporter"
 				{
 					col.a = .1f;
 				}*/
-				col = trans;
+				//col = trans;
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);
 				return col;
