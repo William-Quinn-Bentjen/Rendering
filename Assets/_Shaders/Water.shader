@@ -66,6 +66,7 @@
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+			//o.Albedo = float3 (c.r, c.g, _NoiseScale * snoise(float3(IN.x + _NoiseOffset.x, IN.y + _NoiseOffset.y, IN.z + _NoiseOffset.z)));
 			o.Albedo = c.rgb;
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
