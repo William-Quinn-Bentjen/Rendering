@@ -7,14 +7,12 @@
 		_Tess("Tessellation", Range(1,8)) = 4
 		_NoiseScale("Noise Scale", float) = 1
 		_NoiseColorScale("Noise Color Scale", float) = 1
-		_NoiseAlphaScale("Noise Alpha Scale", float) = 1
 		_NoiseFrequency("Noise Frequency", float) = 1
 		_NoiseOffset("Noise Offset", Vector) = (0,0,0,0)
 		_MaxAlpha("Maximum Alpha", Range(0,1)) = .75
 		_MinAlpha("Minimum Alpha", Range(0,1)) = 1
 		_TimeScale("Time Scaler", float) = 10
 		
-		_Alpha("Alpha", Range(0,1)) = 1
 	}
 	SubShader {
 		//Tags { "RenderType"="Opaque" }
@@ -48,7 +46,7 @@
 		half _Glossiness;
 		half _Metallic;
 		fixed4 _Color;
-		float _NoiseScale, _NoiseFrequency, _NoiseColorScale, _NoiseAlphaScale;
+		float _NoiseScale, _NoiseFrequency, _NoiseColorScale;
 		half _Alpha;
 		float4 _NoiseOffset;
 		float _MaxAlpha, _MinAlpha, _TimeScale;
@@ -98,7 +96,7 @@
 			// Metallic and smoothness come from slider variables
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
-			o.Alpha = clamp((_Alpha+ noise/2) * _NoiseAlphaScale,_MinAlpha, _MaxAlpha);
+			o.Alpha = clamp((_Alpha+ noise/2),_MinAlpha, _MaxAlpha);
 			//o.Alpha = _NoiseScale * snoise(float3(IN.worldPos.x + _NoiseOffset.x, IN.worldPos.y + _NoiseOffset.y, IN.worldPos.z + _NoiseOffset.z) * _NoiseFrequency);
 		}
 		ENDCG
