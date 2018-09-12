@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraConnections : MonoBehaviour
 {
-    public List<Cinemachine.CinemachineVirtualCamera> connectedTo = new List<Cinemachine.CinemachineVirtualCamera>();
-    public Dictionary<Cinemachine.CinemachineVirtualCamera, Cinemachine.CinemachineSmoothPath> paths = new Dictionary<Cinemachine.CinemachineVirtualCamera, Cinemachine.CinemachineSmoothPath>();
-    //public List<Cinemachine.CinemachineSmoothPath> pathComponents = new List<Cinemachine.CinemachineSmoothPath>();
+    public bool IsCenter = false;
+    public List<CameraConnections> connectedTo = new List<CameraConnections>();
+    public Dictionary<CameraConnections, Cinemachine.CinemachineSmoothPath> paths = new Dictionary<CameraConnections, Cinemachine.CinemachineSmoothPath>();
     private static Cinemachine.CinemachineSmoothPath.Waypoint here = new Cinemachine.CinemachineSmoothPath.Waypoint { position = Vector3.zero };
     public void Connect()
     {
@@ -15,12 +15,20 @@ public class CameraConnections : MonoBehaviour
         //create new paths for each camera connected
         for (int i = 0; i < connectedTo.Count; i++)
         {
-            //create new path
-            Cinemachine.CinemachineSmoothPath path = gameObject.AddComponent<Cinemachine.CinemachineSmoothPath>();
-            //add waypoint from here to the connected camera
-            path.m_Waypoints = new Cinemachine.CinemachineSmoothPath.Waypoint[2] { here, new Cinemachine.CinemachineSmoothPath.Waypoint { position = transform.InverseTransformPoint(connectedTo[i].transform.position) } };
-            //add path to the dictionary
-            paths.Add(connectedTo[i], path);
+            if (connectedTo != null)
+            {
+                //create new path
+                Cinemachine.CinemachineSmoothPath path = gameObject.AddComponent<Cinemachine.CinemachineSmoothPath>();
+                //add waypoint from here to the connected camera
+                path.m_Waypoints = new Cinemachine.CinemachineSmoothPath.Waypoint[2] { here, new Cinemachine.CinemachineSmoothPath.Waypoint { position = transform.InverseTransformPoint(connectedTo[i].transform.position) } };
+                //add path to the dictionary
+                paths.Add(connectedTo[i], path);
+            }
+            else
+            {
+                Debug.LogError("Can not have a camera connection with a null Connected To value", gameObject);
+            }
+
         }
     }
     public void Disconnect()

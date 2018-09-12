@@ -22,6 +22,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _BumpTex:
+        m_Texture: {fileID: 2800000, guid: 499f175652c79a14b8a928c06737a2a9, type: 3}
+        m_Scale: {x: 2.5, y: 2.5}
+        m_Offset: {x: 0, y: 0}
+    - _BumpTex1:
+        m_Texture: {fileID: 2800000, guid: beae3af77e697654a80373abffca1bef, type: 3}
+        m_Scale: {x: 2.5, y: 2.5}
+        m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -39,8 +47,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e9e9d1dd646670c4da19dbb159adebf8, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 93bb03d3a0d487f4a92b98bf617b51da, type: 3}
+        m_Scale: {x: 2.5, y: 2.5}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex1:
+        m_Texture: {fileID: 2800000, guid: f06aae7ede8626c438b4a71f267bdb7f, type: 3}
+        m_Scale: {x: 2.5, y: 2.5}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -63,25 +75,29 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 1
     - _GlossyReflections: 1
-    - _MaxAlpha: 0.75
+    - _MaxAlpha: 1
     - _Metallic: 1
-    - _MinAlpha: 1
+    - _MinAlpha: 0.254
     - _Mode: 0
-    - _NoiseAlphaScale: 4.79
-    - _NoiseColorScale: 8.45
-    - _NoiseFrequency: 0.61
-    - _NoiseScale: 1
+    - _NoiseAlphaScale: 1
+    - _NoiseColorScale: 8.02
+    - _NoiseFrequency: 1.36
+    - _NoiseScale: 0.45
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Tess: 4.78
+    - _Tess: 4
     - _TimeScale: 10
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - Test: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.297, g: 1, b: 0, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _NoiseOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _BumpOffset: {r: 1, g: -1.5, b: -1, a: 1}
+    - _Color: {r: 0, g: 1, b: 0, a: 1}
+    - _Color2: {r: 1, g: 1, b: 0, a: 1}
+    - _ColorOffset: {r: -1, g: -1, b: 2, a: 2}
+    - _EmissionColor: {r: 0, g: 1, b: 0, a: 1}
+    - _NoiseOffset: {r: 0, g: 0, b: 1, a: 0}
+    - _SpecColor: {r: 0, g: 0.83448267, b: 1, a: 1}
