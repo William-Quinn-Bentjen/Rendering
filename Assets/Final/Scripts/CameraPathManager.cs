@@ -101,7 +101,8 @@ public class CameraPathManager : MonoBehaviour {
     private void ConnectCameras()
     {
         Debug.Log("Connecting Cameras");
-        CameraPathManager.connectedCameras.Clear();
+        DisconnectCameras();
+        //CameraPathManager.connectedCameras.Clear();
         foreach (CameraConnections connection in FindObjectsOfType<CameraConnections>())
         {
             Debug.Log("Connected " + connection.name);
