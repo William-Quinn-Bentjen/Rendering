@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour {
             }
             else
             {
-                Quaternion.Slerp(endPoint.transform.rotation, Quaternion.Euler(0,0,0)l)
+                //Quaternion.Slerp(endPoint.transform.rotation, Quaternion.Euler(0, 0, 0));
             }
         }
 	}

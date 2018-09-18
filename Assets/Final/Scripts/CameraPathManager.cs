@@ -5,9 +5,9 @@ using UnityEditor;
 
 
 //select all with class 
+//folder generation/organize files
 public class CameraPathManager : MonoBehaviour {
     public static List<CameraConnections> connectedCameras = new List<CameraConnections>();
-    public static List<CameraConnections> connectedCenterCameras = new List<CameraConnections>();
     //not enough time to implement well
 
     public struct CameraPathData
@@ -108,10 +108,6 @@ public CameraPathData GetPath(CameraConnections start, CameraConnections end)
         {
             Debug.Log("Connected " + connection.name);
             CameraPathManager.connectedCameras.Add(connection);
-            if (connection.IsCenter)
-            {
-                CameraPathManager.connectedCenterCameras.Add(connection);
-            }
             connection.Connect();
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraConnections : MonoBehaviour
 {
     public bool IsDestination = false;
+    public bool debug = false;
     //public bool Is = false;
     public List<CameraConnections> directlyConnectedTo = new List<CameraConnections>();
     public Dictionary<CameraConnections, Cinemachine.CinemachineSmoothPath> paths = new Dictionary<CameraConnections, Cinemachine.CinemachineSmoothPath>();
@@ -29,11 +30,18 @@ public class CameraConnections : MonoBehaviour
         //used to hold all the destinations that will need to be added to the path dictonary at the end of the connect proccess
         Dictionary<CameraConnections, List<CameraConnections>> finalConnections = new Dictionary<CameraConnections, List<CameraConnections>>();
         //list of all connections discovered
-        List<CameraConnections> discovered = directlyConnectedTo;
+        List<CameraConnections> discovered = new List<CameraConnections>();// directlyConnectedTo.ToArray());
+        foreach (CameraConnections connection in directlyConnectedTo)
+        {
+            if (discovered.Contains(connection) == false)
+            {
+                discovered.Add(connection);
+            }
+        }
         //list of unexplored connections
         List<ConnectionPathData> unexplored = new List<ConnectionPathData>();
         //set up inital unexplored list
-        foreach (CameraConnections connection in directlyConnectedTo)
+        foreach (CameraConnections connection in discovered)
         {
             if (connection.IsDestination)
             {
@@ -55,9 +63,13 @@ public class CameraConnections : MonoBehaviour
                     //if it's direct connection is not discovered yet add it to the discovered list and the unexplored list
                     if (discovered.Contains(connection) == false)
                     {
+                        if (debug)
+                        {
+                            debug = true;
+                        }
                         //path to the connection
                         List<CameraConnections> pathTo = unexplored[0].pathToConnection;
-                        pathTo.Add(unexplored[0].connection);
+                        pathTo.Add(connection);
                         //add to unexplored list
                         unexplored.Add(new ConnectionPathData(connection, pathTo));
                         //add to the discovered list so it's not found again
@@ -84,10 +96,14 @@ public class CameraConnections : MonoBehaviour
         foreach (CameraConnections destination in finalConnections.Keys)
         {
             //add waypoints starting from here to the destination
-            List<Cinemachine.CinemachineSmoothPath.Waypoint> waypoints = new List<Cinemachine.CinemachineSmoothPath.Waypoint>() { here };
+            List<Cinemachine.CinemachineSmoothPath.Waypoint> waypoints = new List<Cinemachine.CinemachineSmoothPath.Waypoint>() /*{ here }*/;
             for (int i = 0; i < finalConnections[destination].Count; i++)
             {
-                waypoints.Add(new Cinemachine.CinemachineSmoothPath.Waypoint() { position = transform.InverseTransformPoint(finalConnections[destination][0].transform.position) });
+                if (debug)
+                {
+                    Debug.Log(i + " " + finalConnections[destination][i].ToString() + " " + transform.InverseTransformPoint(finalConnections[destination][i].transform.position));
+                }
+                waypoints.Add(new Cinemachine.CinemachineSmoothPath.Waypoint() { position = transform.InverseTransformPoint(finalConnections[destination][i].transform.position) });
             }
             waypoints.Add(new Cinemachine.CinemachineSmoothPath.Waypoint() { position = transform.InverseTransformPoint(destination.transform.position) });
             //create path component 
