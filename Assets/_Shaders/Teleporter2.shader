@@ -115,7 +115,7 @@
 			fixed3 main1 = lerp(_Color2, fixed3(1, 1, 0), mainColor1.r);
 			fixed3 col = main1 + main;
 			o.Albedo = col;
-			o.Emission = col.r * _EmissionColor * _MinAlpha * (sin(_Time.x * _TimeScale)/2+.5);
+			o.Emission = col.r * _EmissionColor * (sin(_Time.x * _TimeScale)/2+.75);
 
 			//lerp(_Color1.rgb, _Color2.rgb, Minimum(1, col.r));
 			//o.Albedo = (blackOfFirst * _Color) + (blackOfSecond * _Color2);
@@ -128,6 +128,7 @@
 			// Metallic and smoothness come from slider variables
 			o.Specular = _Glossiness;
 			o.Gloss = _Glossiness;// _SpecColor.a;
+			//o.Emission = _EmissionColor;
 			o.Alpha = _MaxAlpha;// clamp((_Alpha + noise / 2), _MinAlpha, _MaxAlpha);
 			//o.Alpha = _NoiseScale * snoise(float3(IN.worldPos.x + _NoiseOffset.x, IN.worldPos.y + _NoiseOffset.y, IN.worldPos.z + _NoiseOffset.z) * _NoiseFrequency);
 		}

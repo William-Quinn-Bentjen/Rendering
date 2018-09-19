@@ -73,11 +73,11 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _Glossiness: 0.991
     - _GlossyReflections: 1
-    - _MaxAlpha: 1
+    - _MaxAlpha: 0.95
     - _Metallic: 1
-    - _MinAlpha: 0.254
+    - _MinAlpha: 0
     - _Mode: 0
     - _NoiseAlphaScale: 1
     - _NoiseColorScale: 8.02
@@ -98,6 +98,6 @@ Material:
     - _Color: {r: 0, g: 1, b: 0, a: 1}
     - _Color2: {r: 1, g: 1, b: 0, a: 1}
     - _ColorOffset: {r: -1, g: -1, b: 2, a: 2}
-    - _EmissionColor: {r: 0, g: 1, b: 0, a: 1}
+    - _EmissionColor: {r: 0, g: 0.591, b: 0, a: 1}
     - _NoiseOffset: {r: 0, g: 0, b: 1, a: 0}
     - _SpecColor: {r: 0, g: 0.83448267, b: 1, a: 1}

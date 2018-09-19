@@ -45,6 +45,9 @@
 
 		void vert(inout appdata v)
 		{
+			_NoiseOffset.y += _Time.x * 10;
+			_NoiseOffset.x += _Time.x * 10;
+			_NoiseOffset.z += _Time.x * 10;
 			//vertex manupulation and normal recalculation
 			float3 v0 = v.vertex.xyz;
 			float3 bitangent = cross(v.normal, v.tangent.xyz);
