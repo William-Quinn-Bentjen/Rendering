@@ -47,7 +47,7 @@ public class CameraConnections : MonoBehaviour
             {
                 finalConnections.Add(connection, new List<CameraConnections>() { this });
             }
-            unexplored.Add(new ConnectionPathData(connection, new List<CameraConnections>() { this }));
+            unexplored.Add(new ConnectionPathData(connection, new List<CameraConnections>() { this , connection}));
         }
         discovered.Add(this);
         //list of explored connections
@@ -68,7 +68,9 @@ public class CameraConnections : MonoBehaviour
                             debug = true;
                         }
                         //path to the connection
-                        List<CameraConnections> pathTo = unexplored[0].pathToConnection;
+                        //CameraConnections[] pathToArray = new CameraConnections[50];
+                        //unexplored[0].pathToConnection.CopyTo(pathToArray);
+                        List<CameraConnections> pathTo = new List<CameraConnections>(unexplored[0].pathToConnection.ToArray()); //unexplored[0].pathToConnection;
                         pathTo.Add(connection);
                         //add to unexplored list
                         unexplored.Add(new ConnectionPathData(connection, pathTo));
@@ -105,7 +107,11 @@ public class CameraConnections : MonoBehaviour
                 }
                 waypoints.Add(new Cinemachine.CinemachineSmoothPath.Waypoint() { position = transform.InverseTransformPoint(finalConnections[destination][i].transform.position) });
             }
-            waypoints.Add(new Cinemachine.CinemachineSmoothPath.Waypoint() { position = transform.InverseTransformPoint(destination.transform.position) });
+            if (destination == finalConnections[destination][finalConnections[destination].Count - 1])
+            {
+                //BUGGY
+                waypoints.Add(new Cinemachine.CinemachineSmoothPath.Waypoint() { position = transform.InverseTransformPoint(destination.transform.position) });
+            }
             //create path component 
             Cinemachine.CinemachineSmoothPath path = gameObject.AddComponent<Cinemachine.CinemachineSmoothPath>();
             //set waypoints
