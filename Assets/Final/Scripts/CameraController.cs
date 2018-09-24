@@ -3,66 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
-    public Queue<Cinemachine.CinemachineSmoothPath> currentPath = new Queue<Cinemachine.CinemachineSmoothPath>();
-    private CameraConnections endPoint;
+    public CameraConnections currentConnection;
+    public Cinemachine.CinemachineSmoothPath currentPath;
     public Cinemachine.CinemachineDollyCart dollyCart;
+    public Rigidbody cameraRigidbody;
     public Cinemachine.CinemachineVirtualCamera targetCamera;
+    private Cinemachine.CinemachineVirtualCamera tempCamera;
     public float LookAtDistance;
+    public CameraConnections tempTarget;
+    //intenal path data
+    private CameraConnections destination;
     private float pathLength;
     private float pathPosition;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	// Update is called once per frame
-	void Update () {
+    private void Reset()
+    {
+        dollyCart = GetComponent<Cinemachine.CinemachineDollyCart>();
+        cameraRigidbody = GetComponent<Rigidbody>();
+        targetCamera = GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();
+    }
+    private void Start()
+    {
+        Debug.Log(currentConnection.paths.Keys);
+        SetPath(currentConnection.paths[tempTarget], tempTarget);
+        //set target camera to take priority over all others
+        targetCamera.Priority = 11;
+    }
+    // Update is called once per frame
+    void Update () {
         pathPosition = dollyCart.m_Position;
-		if (pathPosition >= pathLength)
+		if (pathPosition >= pathLength && destination != null)
         {
-            //next path
-            NextPathSegment();
+            //path complete
+            currentConnection = destination;
+            destination = null;
+            tempCamera = currentConnection.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+            //have the destination's camera take over
+            tempCamera.Priority = 12;
         }
         else if (pathPosition + LookAtDistance >= pathLength)
         {
-            //stop camera look at
-            //slerp rotation to next position
-            if (currentPath.Count > 0)
-            {
-                Quaternion.Slerp(currentPath.Peek().transform.rotation, Quaternion.Euler(0, 0, 0), (pathLength - pathPosition) / LookAtDistance);
-            }
-            else
-            {
-                //Quaternion.Slerp(endPoint.transform.rotation, Quaternion.Euler(0, 0, 0));
-            }
+            //look at destination
+            //targetCamera.m_LookAt = destination.transform;
+        }
+        else
+        {
+            //rotate the camera to look at where ever the cart is currently moving it
+            //targetCamera.transform.rotation = Quaternion.Euler(cameraRigidbody.velocity.normalized);
+            //targetCamera.m_LookAt = destination.transform;
         }
 	}
-    private void NextPathSegment()
+    public void SetPath(Cinemachine.CinemachineSmoothPath path, CameraConnections newDestination)
     {
-        if (currentPath.Count > 0)
+        if (tempCamera != null)
         {
-            SetPathSegment(currentPath.Dequeue());
+            tempCamera.Priority = 10;
         }
-        else
-        {
-            transform.rotation = endPoint.transform.rotation;
-        }
-    }
-    private void SetPathSegment(Cinemachine.CinemachineSmoothPath path)
-    {
+        currentPath = path;
+        destination = newDestination;
+        pathLength = path.PathLength;
+        //pathPosition = 0;
         dollyCart.m_Position = 0;
         dollyCart.m_Path = path;
-        if (currentPath.Count > 0)
-        {
-            targetCamera.m_LookAt = currentPath.Peek().transform;
-        }
-        else
-        {
-            targetCamera.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-    }
-    public void SetPath(CameraPathManager.CameraPathData pathData)
-    {
-        currentPath = pathData.path;
-        NextPathSegment();
+        targetCamera.m_LookAt = newDestination.transform;
     }
 }
