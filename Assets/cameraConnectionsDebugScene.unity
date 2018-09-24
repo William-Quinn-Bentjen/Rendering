@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 171045400}
   - component: {fileID: 171045399}
   - component: {fileID: 171045398}
+  - component: {fileID: 171045403}
   m_Layer: 0
   m_Name: Connection (3)
   m_TagString: Untagged
@@ -148,6 +149,7 @@ MonoBehaviour:
   directlyConnectedTo:
   - {fileID: 2060129883}
   - {fileID: 1362697201}
+  - {fileID: 1281990269}
 --- !u!23 &171045399
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -214,6 +216,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &171045403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 171045397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    width: 0.2
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 0, y: 0, z: 0}
+    roll: 0
+  - position: {x: -3.48, y: 0, z: -1.8800001}
+    roll: 0
+  - position: {x: -3.48, y: 0, z: -1.8800001}
+    roll: 0
 --- !u!1 &1281990268
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd62569ceac04a44ca8c1e99a336fc50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDestination: 0
+  IsDestination: 1
   debug: 0
   directlyConnectedTo:
   - {fileID: 2060129883}
@@ -270,6 +296,8 @@ MonoBehaviour:
   m_Looped: 0
   m_Waypoints:
   - position: {x: 0, y: 0, z: 0}
+    roll: 0
+  - position: {x: 3.48, y: 0, z: 1.8800001}
     roll: 0
   - position: {x: 3.48, y: 0, z: 1.8800001}
     roll: 0
@@ -351,6 +379,7 @@ GameObject:
   - component: {fileID: 1362697204}
   - component: {fileID: 1362697203}
   - component: {fileID: 1362697201}
+  - component: {fileID: 1362697207}
   - component: {fileID: 1362697202}
   m_Layer: 0
   m_Name: Connection (2)
@@ -394,6 +423,8 @@ MonoBehaviour:
   m_Looped: 0
   m_Waypoints:
   - position: {x: 0, y: 0, z: 0}
+    roll: 0
+  - position: {x: 4.94, y: 0, z: -1.4099998}
     roll: 0
   - position: {x: 4.94, y: 0, z: -1.4099998}
     roll: 0
@@ -463,6 +494,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1362697207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1362697200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    width: 0.2
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 0, y: 0, z: 0}
+    roll: 0
+  - position: {x: 1.46, y: 0, z: -3.29}
+    roll: 0
+  - position: {x: 1.46, y: 0, z: -3.29}
+    roll: 0
 --- !u!1 &1712357594
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +611,7 @@ GameObject:
   - component: {fileID: 2060129886}
   - component: {fileID: 2060129885}
   - component: {fileID: 2060129883}
+  - component: {fileID: 2060129889}
   - component: {fileID: 2060129884}
   m_Layer: 0
   m_Name: Connection
@@ -599,7 +655,7 @@ MonoBehaviour:
   m_Waypoints:
   - position: {x: 0, y: 0, z: 0}
     roll: 0
-  - position: {x: -2.91, y: 0, z: 7.54}
+  - position: {x: -1.45, y: 0, z: 4.25}
     roll: 0
   - position: {x: 2.03, y: 0, z: 6.13}
     roll: 0
@@ -671,6 +727,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2060129889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2060129882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    width: 0.2
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 0, y: 0, z: 0}
+    roll: 0
+  - position: {x: -1.45, y: 0, z: 4.25}
+    roll: 0
+  - position: {x: -1.45, y: 0, z: 4.25}
+    roll: 0
 --- !u!1 &2146431564
 GameObject:
   m_ObjectHideFlags: 0

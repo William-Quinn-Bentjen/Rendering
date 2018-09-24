@@ -45,7 +45,7 @@ public class CameraConnections : MonoBehaviour
         {
             if (connection.IsDestination)
             {
-                finalConnections.Add(connection, new List<CameraConnections>() { this });
+                finalConnections.Add(connection, new List<CameraConnections>() { this , connection });
             }
             unexplored.Add(new ConnectionPathData(connection, new List<CameraConnections>() { this , connection}));
         }
@@ -77,7 +77,7 @@ public class CameraConnections : MonoBehaviour
                         //add to the discovered list so it's not found again
                         discovered.Add(connection);
                         //if its a destination
-                        if (connection.IsDestination)
+                        if (connection.IsDestination && finalConnections.ContainsKey(connection) == false)
                         {
                             //add to the final destinations dictonary
                             finalConnections.Add(connection, pathTo);
@@ -106,11 +106,6 @@ public class CameraConnections : MonoBehaviour
                     Debug.Log(i + " " + finalConnections[destination][i].ToString() + " " + transform.InverseTransformPoint(finalConnections[destination][i].transform.position));
                 }
                 waypoints.Add(new Cinemachine.CinemachineSmoothPath.Waypoint() { position = transform.InverseTransformPoint(finalConnections[destination][i].transform.position) });
-            }
-            if (destination == finalConnections[destination][finalConnections[destination].Count - 1])
-            {
-                //BUGGY
-                waypoints.Add(new Cinemachine.CinemachineSmoothPath.Waypoint() { position = transform.InverseTransformPoint(destination.transform.position) });
             }
             //create path component 
             Cinemachine.CinemachineSmoothPath path = gameObject.AddComponent<Cinemachine.CinemachineSmoothPath>();
