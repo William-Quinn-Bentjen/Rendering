@@ -15,19 +15,15 @@ public class FightController : MonoBehaviour {
 	private Quaternion victimStartingRot;
 	// Use this for initialization
 	void Start () {
-		attackerStartingPos = attackerTrans.position;
-		attackerStartingRot = attackerTrans.rotation;
-		victimStartingPos = victimTrans.position;
-		victimStartingRot = victimTrans.rotation;
 	}
 	public void ResetAnimation()
 	{
-		victim.SetTrigger ("Reset");
-		victimTrans.position = victimStartingPos;
-		victimTrans.rotation = victimStartingRot;
+		//victim.SetTrigger ("Reset");
+		//victimTrans.position = victimStartingPos;
+		//victimTrans.rotation = victimStartingRot;
 
-		attackerTrans.position = attackerStartingPos;
-		attackerTrans.rotation = attackerStartingRot;
+		////attackerTrans.position = attackerStartingPos;
+		////attackerTrans.rotation = attackerStartingRot;
 	}
 	public void Attack()
 	{
