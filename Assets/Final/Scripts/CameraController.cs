@@ -55,4 +55,9 @@ public class CameraController : MonoBehaviour {
         dollyCart.m_Path = path;
         targetCamera.m_LookAt = newDestination.transform;
     }
+	public bool CanTravelTo(CameraConnections connection)
+	{
+        return false;
+		//if (
+	}
 }
