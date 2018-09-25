@@ -24,6 +24,10 @@ public class MaterialSwitcher : MonoBehaviour {
             }
         }
     }
+
+
+
+	/*
     private void Start()
     {
         StartCoroutine(testSwitch());
@@ -45,5 +49,6 @@ public class MaterialSwitcher : MonoBehaviour {
             yield return new WaitForSeconds(2);
         }
     }
+    */
 
 }
